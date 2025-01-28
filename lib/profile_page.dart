@@ -11,8 +11,119 @@ class ProfilePage extends StatelessWidget {
         children: [
           _TitleWidgetsRow(),
           _ActionButtonsRow(),
-          Container(child: Column(),)
+          _ShopsWidget(),
         ],
+      ),
+    );
+  }
+}
+
+class _ShopsWidget extends StatelessWidget {
+  const _ShopsWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Container(
+        width: 350,
+        height: 326,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 12.0),
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    border: Border(bottom: BorderSide(width: 1.0, color: Colors.grey.shade300))),
+                width: 310.0,
+                height: 30,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Text(
+                        "Bellago Coffee",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: "SFPro",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    SizedBox(
+                      width: 4.93,
+                      height: 8.82,
+                      child: Center(
+                        child: Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          color: Colors.grey,
+                          size: 12,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 20.0,
+                  top: 12.0,
+                  right: 12.0,
+                ),
+                child: SizedBox(
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 110,
+                        height: 110,
+                        color: Colors.grey.shade100,
+                        child: Image.asset(
+                          "assets/images/im_pizza.png",
+                        ),
+                      ),
+                      SizedBox(
+                        width: 9.0,
+                      ),
+                      Container(
+                        width: 199,
+                        height: 110,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Том ям",
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: "SFPro",
+                                  ),
+                                ),
+                                Text("250")
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

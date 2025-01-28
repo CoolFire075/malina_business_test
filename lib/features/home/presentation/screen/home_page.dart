@@ -73,11 +73,10 @@ class _CategoryWidgetList extends StatelessWidget {
         child: Row(
           children: [
             ...categoryList.map(
-                  (e) =>
-              e.name.isNotEmpty
+              (e) => e.name.isNotEmpty
                   ? Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: _CategoryWidget(name: e.name, color: e.color))
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: _CategoryWidget(name: e.name, color: e.color))
                   : const SizedBox(),
             ),
           ],
@@ -283,47 +282,52 @@ class _ScannerShowButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 14.0),
-      child: Container(
-        height: 90,
-        width: 350,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.0),
-          color: NetworkConstants.malinaColor,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 24.0,
-                top: 11.0,
-                bottom: 11.0,
-              ),
-              child: SvgPicture.asset(
-                "assets/icons/ic_scanner.svg",
-                height: 68.0,
-                width: 36.0,
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 50.0, top: 26.0, bottom: 26.0),
-              child: SizedBox(
-                height: 38.0,
-                width: 223.0,
-                child: Text(
-                  '''Сканируй QR-код и заказывай
-      прямо в заведении''',
-                  style: TextStyle(
-                    color: NetworkConstants.whiteColor,
-                    fontFamily: 'SFPro',
-                    // fontSize: 16.0,
-                    fontWeight: FontWeight.w500,
-                  ),
+      padding: EdgeInsets.only(top: 14.0),
+      child: GestureDetector(
+        onTap: () {
+          context.go('/scanner');
+        },
+        child: Container(
+          height: 90,
+          width: 350,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12.0),
+            color: NetworkConstants.malinaColor,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 24.0,
+                  top: 11.0,
+                  bottom: 11.0,
+                ),
+                child: SvgPicture.asset(
+                  "assets/icons/ic_scanner.svg",
+                  height: 68.0,
+                  width: 36.0,
                 ),
               ),
-            )
-          ],
+              const Padding(
+                padding: EdgeInsets.only(right: 50.0, top: 26.0, bottom: 26.0),
+                child: SizedBox(
+                  height: 38.0,
+                  width: 223.0,
+                  child: Text(
+                    '''Сканируй QR-код и заказывай
+        прямо в заведении''',
+                    style: TextStyle(
+                      color: NetworkConstants.whiteColor,
+                      fontFamily: 'SFPro',
+                      // fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

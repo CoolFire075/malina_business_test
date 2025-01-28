@@ -4,6 +4,8 @@ import 'package:malina_business_test/basket_page.dart';
 import 'package:malina_business_test/core/navigation/routes/basket_route.dart';
 import 'package:malina_business_test/core/navigation/routes/home_route.dart';
 import 'package:malina_business_test/core/navigation/routes/profile_route.dart';
+import 'package:malina_business_test/core/navigation/routes/scaner_route.dart';
+import 'package:malina_business_test/scanner_qr.dart';
 
 import '../../features/home/presentation/screen/home_page.dart';
 import '../../profile_page.dart';
@@ -21,20 +23,16 @@ class MalinaRouter {
                 pageBuilder: (context, state) => const MaterialPage(
                   child: MainScreen(),
                 ),
-                // routes: [
-                //   GoRoute(
-                //     path: NoteRoute.name,
-                //     pageBuilder: (context, state) {
-                //       final idString = state.uri.queryParameters[NoteRoute.idKeyArg];
-                //       final id = int.tryParse(idString ?? '');
-                //       return MaterialPage(
-                //         child: NotePage(
-                //           id: id,
-                //         ),
-                //       );
-                //     },
-                //   ),
-                // ],
+                routes: [
+                  GoRoute(
+                    path: ScannerRoute.name,
+                    pageBuilder: (context, state) {
+                      return MaterialPage(
+                        child: QRScannerPage(),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),

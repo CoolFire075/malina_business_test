@@ -5,6 +5,6 @@ class BasketPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Text("Basket page"),);
+    return Scaffold(body: Center(child: Text("Basket page")),);
   }
 }
