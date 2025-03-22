@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:malina_business_test/features/home/presentation/bloc/home_cubit.dart';
-import 'core/di/dependency_injection.dart';
-import 'core/navigation/malina_router.dart';
+import 'package:malina_business_test/core/navigation/capp_router.dart';
+
+import 'malina/core/di/dependency_injection.dart';
+import 'malina/features/home/presentation/bloc/home_cubit.dart';
+import 'malina/core/navigation/malina_router.dart';
 
 void main() {
   initDependencyInjection();
@@ -20,9 +22,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: BlocProvider(
+      home:
+      // AuthLoginPage()
+      BlocProvider(
         create: (context) => HomeCubit(),
-        child: MalinaApp(malinaRouter: getIt()),
+        child: CApp(cAppRouter: getIt()),
       ),
     );
   }
@@ -30,17 +34,17 @@ class MyApp extends StatelessWidget {
 
 
 
-class MalinaApp extends StatelessWidget {
-  const MalinaApp({super.key, required this.malinaRouter});
+class CApp extends StatelessWidget {
+  const CApp({super.key, required this.cAppRouter});
 
-  final MalinaRouter malinaRouter;
+  final CappRouter cAppRouter;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routeInformationProvider: malinaRouter.router.routeInformationProvider,
-      routeInformationParser: malinaRouter.router.routeInformationParser,
-      routerDelegate: malinaRouter.router.routerDelegate,
+      routeInformationProvider: cAppRouter.router.routeInformationProvider,
+      routeInformationParser: cAppRouter.router.routeInformationParser,
+      routerDelegate: cAppRouter.router.routerDelegate,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.red)),
       darkTheme: ThemeData(colorScheme: ColorScheme.dark()),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:malina_business_test/core/network/constants.dart';
+
+import 'core/network/constants.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -197,6 +198,15 @@ class _TitleTextWidget extends StatelessWidget {
                   fontFamily: "SFPro",
                 ),
               ),
+              Text(
+                'Подтверждение заказа',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey.shade400,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: "SFPro",
+                ),
+              )
             ],
           ),
         ],

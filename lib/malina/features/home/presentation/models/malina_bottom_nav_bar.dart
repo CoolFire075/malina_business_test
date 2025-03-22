@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:malina_business_test/core/network/constants.dart';
 
+import '../../../../core/network/constants.dart';
 import '../bloc/home_cubit.dart';
 import 'malina_bottom_nav_item.dart';
 
@@ -32,56 +32,6 @@ class MalinaBottomNavBar extends StatelessWidget {
             navigationShell.goBranch(index);
           },
           items: [
-            // BottomNavigationBarItem(
-            //     icon: Column(
-            //       children: [
-            //         SvgPicture.asset(
-            //           'assets/icons/ic_lenta.svg',
-            //           height: 25,
-            //           width: 25,
-            //         ),
-            //       ],
-            //     ),
-            //     label: 'Home'),
-            // BottomNavigationBarItem(
-            //     icon: Container(
-            //       height: 60,
-            //       width: 60,
-            //       decoration: BoxDecoration(
-            //         borderRadius: BorderRadius.circular(10.0),
-            //       ),
-            //       child: Column(
-            //         mainAxisAlignment: MainAxisAlignment.end,
-            //         children: [
-            //           Row(
-            //             mainAxisAlignment: MainAxisAlignment.center,
-            //             children: [
-            //               Padding(
-            //                 padding: const EdgeInsets.only(bottom: 6.0),
-            //                 child: Text(
-            //                   name,
-            //                   style: const TextStyle(
-            //                     color: NetworkConstants.blackColor,
-            //                     fontSize: 12,
-            //                     fontWeight: FontWeight.w400,
-            //                     fontFamily: "SFPro",
-            //                   ),
-            //                 ),
-            //               ),
-            //             ],
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //     label: 'Home'),
-            //
-            // BottomNavigationBarItem(
-            //     icon: SvgPicture.asset(
-            //       'assets/icons/ic_lenta.svg',
-            //       height: 25,
-            //       width: 25,
-            //     ),
-            //     label: 'Home'),
             BottomNavigationBarItem(
               icon: SvgPicture.asset("assets/icons/ic_lenta.svg"),
               label: "Лента",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:malina_business_test/features/home/presentation/category_models.dart';
+
+import 'category_models.dart';
 
 class CategoryList {
   final List<CategoryModels> categoryList = [

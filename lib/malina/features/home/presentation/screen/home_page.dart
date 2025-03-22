@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:malina_business_test/core/network/constants.dart';
-import 'package:malina_business_test/features/home/presentation/bloc/home_cubit.dart';
-import 'package:malina_business_test/features/home/presentation/category_list.dart';
-import 'package:malina_business_test/features/home/presentation/category_models.dart';
 
+import '../../../../core/network/constants.dart';
+import '../bloc/home_cubit.dart';
+import '../category_list.dart';
+import '../category_models.dart';
 import '../models/malina_bottom_nav_bar.dart';
 
 class HomePage extends StatelessWidget {
@@ -47,6 +47,17 @@ class MainScreen extends StatelessWidget {
                 _HomeBeautyImageWidget(),
                 _TextWidget(),
                 _CategoryWidgetList(categoryList: categoryList),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, left: 8.0, right: 8.0),
+                  child: Container(
+                    color: Colors.blue,
+                    width: double.infinity,
+                    height: 100,
+                    child: const Center(
+                      child: Text("data"),
+                    ),
+                  ),
+                )
               ],
             ),
           ],
