@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:malina_business_test/core/navigation/routes/auth_login_route.dart';
 import 'package:malina_business_test/core/navigation/routes/auth_registration_route.dart';
+import 'package:malina_business_test/features/auth/registration/presentation/bloc/auth_registration_bloc.dart';
 import 'package:malina_business_test/features/auth/registration/presentation/screen/auth_registration_page.dart';
 
 import '../../features/auth/login/presentation/screen/auth_login_page.dart';
-import '../../malina/core/navigation/routes/profile_route.dart';
-import '../../malina/features/home/presentation/screen/home_page.dart';
-import '../../malina/profile_page.dart';
+import '../di/dependency_injection.dart';
 
 class CappRouter {
   final GoRouter _router = GoRouter(
@@ -47,7 +47,10 @@ class CappRouter {
               GoRoute(
                 path: AuthRegistrationRoute.name,
                 pageBuilder: (context, state) => MaterialPage(
-                  child: AuthRegistrationPage(),
+                  child: BlocProvider(
+                    create: (context) => getIt<AuthRegistrationBloc>(),
+                    child: AuthRegistrationPage(),
+                  ),
                 ),
                 // routes: [
                 //   GoRoute(
@@ -66,52 +69,52 @@ class CappRouter {
               ),
             ],
           ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: ProfileRoute.name,
-                pageBuilder: (context, state) => const MaterialPage(
-                  child: ProfilePage(),
-                ),
-                // routes: [
-                //   GoRoute(
-                //     path: LoginRoute.name,
-                //     pageBuilder: (context, state) => const MaterialPage(
-                //       child: LoginPage(),
-                //     ),
-                //     routes: [
-                //       GoRoute(
-                //         path: RegistrationRoute.name,
-                //         pageBuilder: (context, state) => const MaterialPage(
-                //           child: RegistrationPage(),
-                //         ),
-                //       ),
-                //     ],
-                //   )
-                // ],
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: ProfileRoute.name,
-                pageBuilder: (context, state) => const MaterialPage(
-                  child: ProfilePage(),
-                ),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: ProfileRoute.name,
-                pageBuilder: (context, state) => const MaterialPage(
-                  child: ProfilePage(),
-                ),
-              ),
-            ],
-          ),
+          // StatefulShellBranch(
+          //   routes: [
+          //     GoRoute(
+          //       path: ProfileRoute.name,
+          //       pageBuilder: (context, state) => const MaterialPage(
+          //         child: ProfilePage(),
+          //       ),
+          //       // routes: [
+          //       //   GoRoute(
+          //       //     path: LoginRoute.name,
+          //       //     pageBuilder: (context, state) => const MaterialPage(
+          //       //       child: LoginPage(),
+          //       //     ),
+          //       //     routes: [
+          //       //       GoRoute(
+          //       //         path: RegistrationRoute.name,
+          //       //         pageBuilder: (context, state) => const MaterialPage(
+          //       //           child: RegistrationPage(),
+          //       //         ),
+          //       //       ),
+          //       //     ],
+          //       //   )
+          //       // ],
+          //     ),
+          //   ],
+          // ),
+          // StatefulShellBranch(
+          //   routes: [
+          //     GoRoute(
+          //       path: ProfileRoute.name,
+          //       pageBuilder: (context, state) => const MaterialPage(
+          //         child: ProfilePage(),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          // StatefulShellBranch(
+          //   routes: [
+          //     GoRoute(
+          //       path: ProfileRoute.name,
+          //       pageBuilder: (context, state) => const MaterialPage(
+          //         child: ProfilePage(),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     ],

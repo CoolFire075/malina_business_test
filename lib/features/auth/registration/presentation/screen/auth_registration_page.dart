@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:malina_business_test/features/auth/registration/presentation/bloc/auth_registration_bloc.dart';
+
 
 class AuthRegistrationPage extends StatelessWidget {
   AuthRegistrationPage({super.key});
@@ -10,28 +13,47 @@ class AuthRegistrationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-      children: [
-        _GoBackWidget(),
-        _RegistrationTextWidget(),
-        _LoginInputWidget(_controller),
-        _LoginInputTextWidget(),
-        _PasswordInputWidget(_passwordController),
-        _PasswordInputTextWidget(),
-        _PasswordInputWidget(_passwordController2),
-        _PasswordInputTextWidget(),
-        _RegistrationButton(),
-      ],
-    ));
+    return BlocBuilder<AuthRegistrationBloc, AuthRegistrationState>(
+      builder: (context, state) {
+        final isLoading = state.isLoading;
+        if(isLoading) {
+          debugPrint("loading");
+          return const Center(child: CircularProgressIndicator());
+        }
+        return Scaffold(
+            body: Column(
+          children: [
+            _GoBackWidget(),
+            _RegistrationTextWidget(),
+            _LoginInputWidget(_controller),
+            _LoginInputTextWidget(),
+            _PasswordInputWidget(_passwordController),
+            _PasswordInputTextWidget(),
+            _PasswordInputWidget(_passwordController2),
+            _PasswordInputTextWidget(),
+            _RegistrationButton(_controller, _passwordController, _passwordController2),
+          ],
+        ));
+      },
+    );
   }
 }
 
 class _RegistrationButton extends StatelessWidget {
-  const _RegistrationButton({super.key});
+  const _RegistrationButton(
+    this._controller,
+    this._passwordController,
+    this._passwordController2, {
+    super.key,
+  });
+
+  final _controller;
+  final _passwordController;
+  final _passwordController2;
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<AuthRegistrationBloc>();
     return Padding(
       padding: const EdgeInsets.only(
         top: 24.0,
@@ -42,6 +64,16 @@ class _RegistrationButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
+            onTap: () {
+              debugPrint("click");
+              bloc.add(
+                AuthRegistrationButtonClicked(
+                  login: _controller.toString(),
+                  password: _passwordController.toString(),
+                  password2: _passwordController2.toString(),
+                ),
+              );
+            },
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.lightGreenAccent,

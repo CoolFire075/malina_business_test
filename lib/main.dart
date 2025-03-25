@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:malina_business_test/core/navigation/capp_router.dart';
 
-import 'malina/core/di/dependency_injection.dart';
-import 'malina/features/home/presentation/bloc/home_cubit.dart';
-import 'malina/core/navigation/malina_router.dart';
+import 'core/di/dependency_injection.dart';
+import 'core/navigation/routes/bloc/home_cubit.dart';
 
 void main() {
   initDependencyInjection();

@@ -10,18 +10,34 @@ class AuthLoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const _GreetingTextWidget(),
-          _LoginInputWidget(_loginController),
-          _LoginInputTextWidget(),
-          _PasswordInputWidget(_passwordController),
-          _PasswordInputTextWidget(),
-          _MoveToRegistrationPageWidget(),
-          _LogInButton(),
-        ],
-      ),
+      body:  _Body(loginController: _loginController, passwordController: _passwordController),
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body({
+    super.key,
+    required TextEditingController loginController,
+    required TextEditingController passwordController,
+  }) : _loginController = loginController, _passwordController = passwordController;
+
+  final TextEditingController _loginController;
+  final TextEditingController _passwordController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const _GreetingTextWidget(),
+        _LoginInputWidget(_loginController),
+        _LoginInputTextWidget(),
+        _PasswordInputWidget(_passwordController),
+        _PasswordInputTextWidget(),
+        _MoveToRegistrationPageWidget(),
+        _LogInButton(),
+      ],
     );
   }
 }
@@ -66,7 +82,8 @@ class _MoveToRegistrationPageWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: (){context.go("/auth_registration");},
+            onTap: (){debugPrint("click");
+              context.go("/auth_registration");},
             child: Text(
               "еще нет аккаунта? зарегистрируйся",
               style: TextStyle(
@@ -364,5 +381,17 @@ class _GreetingTextWidget extends StatelessWidget {
     //     ],
     //   ),
     // ),
+  }
+}
+class HomePage extends StatelessWidget {
+  const HomePage({super.key, required this.navigationShell});
+
+  final StatefulNavigationShell navigationShell;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: navigationShell,
+    );
   }
 }
